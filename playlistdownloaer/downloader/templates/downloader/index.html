@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Playlist Downloader</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <section id="front">
+        <div class="ytlogo__container ">
+            <img src="{% static 'Youtubelogo.png' %}" alt="myimg">
+        </div>
+        <div class="text_container">
+            <h1 class="page_title">YOUTUBE PLAYLIST DOWNLOADER</h1>
+            <div class="input_container">
+                <form method="post" >
+                    {% csrf_token %}
+                    {{ form }}
+            </div>
+            <div class="action_buttons_container">
+                    <button class="button-mod-1"  type="submit" name="actionvid" value="download_videos" onclick="location.href='./#video_titles'"" >DOWNLOAD VIDEOS</button>
+                    <button class="button-mod-2" type="submit" name="action" value="download_videos">DOWNLOAD AUDIO</button> 
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="video_titles">
+        <div>
+            <h1>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h1>
+            {% for title in titles %}
+                {% if title is null%}
+                    <p>PLEASE ENTER A VALID URL</p>
+                {%else%}
+                    <li>{{title}}</li>
+                {% endif %}
+            {% endfor%}
+        </div>
+    </section>
+</body>
+</html>
