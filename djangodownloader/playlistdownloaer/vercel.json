@@ -1,0 +1,13 @@
+{
+    "builds":[{
+        "src": "playlistdownloaer/wsgi.py",
+        "use":"@vercel/python",
+        "config":{"maxLambsaSize": "15mb", "runtime": "python3.9"}
+    }],
+    "routes":[
+        {
+            "src": "/(.*)",
+            "dest": "playlistdownloaer/wsgi.py"
+        }
+    ]
+}
